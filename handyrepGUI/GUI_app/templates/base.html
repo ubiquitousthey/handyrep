@@ -2,19 +2,19 @@
 <head>
 
 	<title>handyrepGUI<!--{% block title %}{% endblock %}--></title>
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
 </head>
 
 <body >
-<div style="background-color: #f9fbfb; position: fixed; top:30px; right:5px;z-index: 2;"><a href="/logout">logout</a></div>
+<div style="background-color: #f9fbfb; position: fixed; top:30px; right:5px;z-index: 2;"><a href="{{url_for('logout')}}">logout</a></div>
 <div id="container">
 <div id="header">
     <div style="background-color: #f9fbfb;  margin: 0% auto">
 
         <ul class=" row">
 	        <li class="col span_1">&nbsp;</li>
-            <li class="col span_15"><a href="/"> <img style="height:120px; float: left" src="/static/handyrepfinal.gif"></a></li>
-            <li class="col span_5"><a href="http://www.pgexperts.com"><img style="height: 100px; padding-top: .65em; float: right" src="/static/logo.png"></a></li>
+            <li class="col span_15"><a href="{{url_for('index')}}"> <img style="height:120px; float: left" src="{{url_for('static',filename='handyrepfinal.gif')}}"></a></li>
+            <li class="col span_5"><a href="http://www.pgexperts.com"><img style="height: 100px; padding-top: .65em; float: right" src="{{url_for('static',filename='logo.png')}}"></a></li>
 	        <li class="col span_1">&nbsp;</li>
 	    </ul>
 
@@ -31,8 +31,8 @@
 
         <ul class=" row">
 	        <li class="col span_1">&nbsp;</li>
-            <li class="col span_15"><a href="/"> <img style="height: 40px; float: left" src="/static/handyrepfinalwithtext.gif"></a></li>
-            <li class="col span_5"><a href="http://www.pgexperts.com"><img style="height: 30px; padding-top: .65em; float: right" src="/static/logo.png"></a></li>
+            <li class="col span_15"><a href="{{url_for('index')}}"> <img style="height: 40px; float: left" src="{{url_for('static',filename='handyrepfinalwithtext.gif')}}"></a></li>
+            <li class="col span_5"><a href="http://www.pgexperts.com"><img style="height: 30px; padding-top: .65em; float: right" src="{{url_for('static',filename='logo.png')}}"></a></li>
 	        <li class="col span_1">&nbsp;</li>
 	    </ul>
 
