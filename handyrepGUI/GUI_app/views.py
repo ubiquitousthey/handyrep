@@ -36,7 +36,7 @@ def logout():
     username = None
     global password
     password = None
-    return redirect('/index')
+    return redirect('index')
 
 
 @app.route('/login/', methods=['GET', 'POST'])
@@ -65,7 +65,7 @@ def login():
             message = "Please check username and password"
 
             return render_template('login.html', form=form, message=message)
-        return redirect(request.args.get('next') or '/index')
+        return redirect(request.args.get('next') or url_for('index'))
 
     return render_template('login.html', form=form)
 
