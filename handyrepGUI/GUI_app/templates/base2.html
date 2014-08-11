@@ -11,7 +11,7 @@
             <th>Enabled</th>
         </tr>
         <tr>
-            <td><a href="/cluster"> <p>cluster</p></a></td>
+            <td><a href="{{url_for('cluster_actions')}}"> <p>cluster</p></a></td>
             <td><p>{{ status.cluster.get("status") }}</p></td>
             <td><p>{{ status.cluster.get("status_message") }}</p></td>
             <td><p>{{ status.cluster.get("status_ts") }}</p></td>
@@ -20,7 +20,7 @@
         </tr>
          {% for key, value in status.get("servers")|dictsort %}
         <tr>
-            <td><a href="/server/{{ key }}"><p>{{key}}</p></a></td>
+            <td><a href="{{url_for('server_actions',server_name=key)}}"><p>{{key}}</p></a></td>
             <td><p>{{value.get("status")}}</p></td>
             <td><p>{{value.get("status_message")}}</p></td>
             <td><p>{{value.get("status_ts")}}</p></td>

@@ -5,7 +5,7 @@
 <div style="padding-left: 4em">
 {% if info %}
     {% for key in info %}
-<h2><a href="/server/{{ key }}"> {{key|capitalize}}'s</a> server information:</h2>
+<h2><a href="{{url_for('server_actions',server_name=key)}}"> {{key|capitalize}}'s</a> server information:</h2>
 <div style="padding-left: 1em; width: 100%">
         <table style="text-align:left;width: 100%;font-size: 1em;">
 	<tr >

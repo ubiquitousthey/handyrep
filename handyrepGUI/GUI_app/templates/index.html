@@ -9,7 +9,7 @@
             </div></div>
             <div style="padding-left: 3em; padding-right: 3em">
 
-                <h3> <a href="/cluster">Cluster</a> status is {{ status.get(category).get("status") }} because {{ status.get(category).get("status_message") }}.
+                <h3> <a href="{{url_for('cluster_actions')}}">Cluster</a> status is {{ status.get(category).get("status") }} because {{ status.get(category).get("status_message") }}.
                     This was reported at {{ status.get(category).get("status_ts") }}</h3>
 
             </div>
@@ -23,7 +23,7 @@
             <div style="padding-left: 3em; padding-right: 3em">
                 <div id="global_nav">
                     {% for key, value in status.get(category)|dictsort %}
-                        <h2><a href="/server/{{ key }}"> {{ key|upper }}</a> </h2>
+                        <h2><a href="{{url_for('server_actions',server_name=key)}}"> {{ key|upper }}</a> </h2>
                         <div style="padding-left: 2em">
                         <h3>{{value.get("hostname")|capitalize}} is a {{value.get("role")}} server and is
                             {% if value.get("enabled") == False%}
