@@ -6,3 +6,4 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 CSRF_ENABLED = True
 SECRET_KEY = 'GUI-secret-key-597621139'
+DEFAULT_HANDYREP = 'http://localhost:8080'
