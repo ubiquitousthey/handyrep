@@ -85,13 +85,13 @@ def run_periodic(func):
 
     print func, "exiting with return", result
 
+def start():
+    startup()
 
-startup()
-
-for func_name in PERIODIC.keys():
-    t = Thread(target=run_periodic, args=(func_name,) )
-    t.daemon = True
-    t.start()
+    for func_name in PERIODIC.keys():
+        t = Thread(target=run_periodic, args=(func_name,) )
+        t.daemon = True
+        t.start()
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")

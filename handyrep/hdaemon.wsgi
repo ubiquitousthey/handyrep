@@ -1,4 +1,5 @@
-from hdaemon import app 
+import hdaemon
+import os
 
 class ReverseProxied(object):
     '''Wrap the application in this middleware and configure the 
@@ -15,10 +16,10 @@ class ReverseProxied(object):
         proxy_set_header X-Script-Name /myprefix;
         }
 
-    :param app: the WSGI application
+    :param app: the hdaemon module so we can get the app and start the daemon
     '''
-    def __init__(self, app):
-        self.app = app
+    def __init__(self, hd):
+        self.hdaemon = hdaemon
 
     def __call__(self, environ, start_response):
         script_name = environ.get('HTTP_X_SCRIPT_NAME', '')
@@ -31,7 +32,10 @@ class ReverseProxied(object):
         scheme = environ.get('HTTP_X_SCHEME', '')
         if scheme:
             environ['wsgi.url_scheme'] = scheme
-        return self.app(environ, start_response)
 
-application = ReverseProxied(app)
+        os.environ['HANDYREP_CONFIG'] = environ['HANDYREP_CONFIG']
+        self.hdaemon.start()
+        return self.hdaemon.app(environ, start_response)
+
+application = ReverseProxied(hdaemon)
 
