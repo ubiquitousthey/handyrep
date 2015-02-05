@@ -170,8 +170,8 @@ class multi_pgbouncer(HandyRepPlugin):
                 dbconfig[dbname] = myconf["extra_connect_param"]
 
         # add in the handyrep db if the user has forgotten it
-        if not dbconf.has_key(self.conf["handyrep"]["handyrep_db"]):
-            dbconf[self.conf["handyrep"]["handyrep_db"]] = myconf["extra_connect_param"]
+        if not dbconfig.has_key(self.conf["handyrep"]["handyrep_db"]):
+            dbconfig[self.conf["handyrep"]["handyrep_db"]] = myconf["extra_connect_param"]
 
         constr = self.dbconnect_line(dbconfig, self.servers[master]["hostname"], self.servers[master]["port"], "")
         replicas = self.sorted_replicas()
