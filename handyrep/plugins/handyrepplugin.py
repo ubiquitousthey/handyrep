@@ -15,6 +15,7 @@ from os.path import join
 from subprocess import call
 import re
 import threading
+import traceback
 
 class HandyRepPlugin(object):
 
@@ -160,6 +161,7 @@ class HandyRepPlugin(object):
             if new_owner:
                 sudo("chown %s %s" % (new_owner, destination,), quiet=True)
         except:
+            self.log('PLUGIN','could not push template %s to server %s - %s' % (templatename,servername, traceback.format_exc()),True)
             retdict = return_dict(False, "could not push template %s to server %s" % (templatename, servername,))
         else:
             retdict = return_dict(True, "pushed template")

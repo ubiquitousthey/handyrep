@@ -1929,7 +1929,8 @@ class HandyRep(object):
             command = self.conf["handyrep"]["test_ssh_command"]
             testit = run(command, warn_only=True, quiet=True)
         except Exception as ex:
-            print exstr(ex)
+            self.log("SSH","Unable to ssh to host %s" % hostname,True)
+            #print exstr(ex)
             return False
 
         result = testit.succeeded
