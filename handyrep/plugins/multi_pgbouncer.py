@@ -161,11 +161,12 @@ class multi_pgbouncer(HandyRepPlugin):
         # servers for pgbouncer
         # build master string first
         myconf = self.conf["plugins"]["multi_pgbouncer"]
+
+        dbconfig = {}
         if myconf["databases"]:
-            dbconfig = myconf["databases"]
+            dbconfig.update(myconf["databases"])
 
         if myconf["database_list"]:
-            dbconfig = {}
             for dbname in myconf["database_list"]:
                 dbconfig[dbname] = myconf["extra_connect_param"]
 
